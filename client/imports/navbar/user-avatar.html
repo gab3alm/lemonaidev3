@@ -1,0 +1,42 @@
+<div class="row avatar-container animated bounce">
+	<img class="user-avatar hide-on-small-only" [src]="user.profile.image" alt="">
+	<div class="avatar-information">
+		<p class="text user-welcome">welcome, {{user.profile.firstname}} </p>
+		<div [ngSwitch]="user.profile.leaveReason" style="display:inline-block;">
+			<template [ngSwitchCase]="''">
+				<div class="modal-trigger-holder tooltipped" materialize="tooltip"  data-position="bottom" data-delay="50" data-tooltip="Stepping Out?" >
+					<a materialize="leanModal" [materializeParams]="[]" href="#timeout-modal" class="modal-trigger">
+						<span class="text user-status">Present</span>
+						<img class="user-timeout" src="images/timeout.svg" alt="">
+					</a>				
+				</div>
+			</template>
+			<template ngSwitchDefault>
+				<div class="tooltipped" materialize="tooltip"  data-position="bottom" data-delay="50" data-tooltip="Stepping In?" >
+					<a  (click)="StepIn()">
+						<span class="text user-status">Away: {{user.profile.leaveReason}} </span>
+						<img class="user-timeout timeIn" src="images/timeout.svg" alt="">						
+					</a>
+				</div>
+			</template>
+		</div>
+	</div>
+</div>
+
+<!-- Timeout Modal Structure -->
+<div id="timeout-modal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<p class="modal-title">Change Availability</p>
+		</div>
+		<div class="row">
+			<div class="input-field col s6 push-s3 availability-input">
+				<input [(ngModel)]="timeoutReason" placeholder="e.g. Meeting" name="timeoutReason" id="timeout-input" type="text" class="validate">
+				<label for="timeout-input">New Availability Status</label>
+			</div>	
+		</div>
+		<div class="row center-align">
+			<button (click)="StepOut()" class="cust-btn modal-action modal-close">Submit</button>
+		</div>
+	</div>
+</div>

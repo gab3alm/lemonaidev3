@@ -1,0 +1,71 @@
+html,body{
+	height:100vh;
+}
+
+.container-fluid{
+	height:100vh;
+	position:relative;
+}
+
+/*Background layer so I can play around with opacity*/
+.background-layer{
+	/*POSITION STUFF*/
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:-1;
+	opacity:1;
+	/*BACKGROUND STYLES*/
+	height:100vh;
+	width:100%;
+	background-image:url('images/lembkg5.jpg');
+	background-size:cover;
+	background-position: center;
+}
+
+.card{
+	margin-top:100px;
+	background-color:rgba(0,0,0,.65);
+}
+
+.logo{
+	height:200px;
+}
+
+.error{
+	font-family:lato;
+	font-size:1.2em;
+	color:white !important;
+	text-align:center;
+	margin:0px;
+}
+
+.input-field>input , input:focus{
+	color:white !important;
+	border-bottom:1px solid white;
+}
+
+.input-field>label{	
+	color:white !important;
+}
+
+.forgot-password{
+	font-family:lato;
+	font-size:1em;
+	color:white;
+}
+
+.forgot-password:hover{
+	color:turquoise;
+}
+
+.btn{
+	min-width:150px;
+	margin-right:20px;
+	background-color:rgba(43,164,218,1) !important;
+	/*background-color:rgba(104,196,43,1) !important;*/
+}
+
+.forgot-holder{
+	margin-top:10px;
+}

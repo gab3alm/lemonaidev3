@@ -1,0 +1,43 @@
+.conversationTitle{
+	font-family:lato;
+	font-size:1.8em;
+	text-transform: capitalize;
+	text-align: center;
+	padding:0px;
+	margin:0px;
+}
+
+.sender{
+	font-family:lato;
+	font-size:1.5em;
+	color:rgba(0,0,0,1);
+	text-transform: capitalize;
+
+	margin:0px;
+}
+
+.message{
+	font-family:Karla;
+	font-size:1.2em;
+	color:rgba(0,0,0,.75);
+}
+
+.sent{
+	font-family:karla;
+	font-size:.8em;
+	color:rgba(0,0,0,.5);
+}
+
+.sender-row{
+	border-bottom:1px solid rgba(0,0,0,.25);
+}
+
+.cust-btn{
+	font-family:lato;
+	font-size:1.2em;
+	color:rgba(104,196,43,1);
+	
+	border-radius:20px;
+	background-color:transparent;
+	border:2px solid rgba(104,196,43,1);
+}

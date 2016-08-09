@@ -1,0 +1,61 @@
+.dyn-avatar-holder{
+	position:relative;
+	height:140px;
+	margin-top:20px;
+}
+
+.cust-user-image{
+	height:120px;
+	width:120px;
+	border-radius: 50%;
+	border:2px solid white;
+	
+	position:absolute;
+	top:0px;
+	left:0px;
+	margin-left:40px;
+}
+
+.full-name{
+	font-family:lato;
+	font-size:2.2em;
+	color:rgba(0,0,0,.5);
+	text-transform: capitalize;
+	
+
+	position:absolute;
+	top:0px;
+	left:170px;
+	margin-top:10px;
+}
+
+.title{
+	font-family:karla;
+	font-size:1.2em;
+	color:rgba(0,0,0,.5);
+	text-transform: capitalize;
+	
+
+	position:absolute;
+	top:0px;
+	left:170px;
+	margin-top:55px;
+}
+
+.cust-btn{
+	font-family:lato;
+	font-size:1.2em;
+	background-color:transparent;
+	border: 1px solid rgba(43,164,218,1);
+	color: rgba(43,164,218,1);
+	border-radius: 20px;
+
+	position:absolute;
+	top:0px;
+	left:170px;
+	margin-top:85px;
+}
+
+.cust-btn:hover{
+	background-color:rgba(43,164,218,.2);;
+}

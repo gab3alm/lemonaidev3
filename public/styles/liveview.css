@@ -1,0 +1,37 @@
+.rulers{
+	margin-top:-30px;
+	padding:0px;
+}
+
+.section-title-holder{
+	margin-left:20px;
+}
+
+.section-title{
+	font-family: lato;
+	font-size:2em;
+	color:rgba(0,0,0,.5);
+	text-transform: capitalize;
+	padding:0px;
+}
+
+.description{
+	font-family: karla;
+	font-size:1.5em;
+	color:rgba(0,0,0,.4);
+	text-transform: capitalize;
+	margin-top:-30px;
+	padding:0px;
+}
+
+.ruler{
+	width:24%;
+	display:inline-block;
+	margin-left:-10px;
+	padding:0px;
+}
+
+.green{border:1px solid rgba(104,196,43,1);}
+.yellow{border:1px solid yellow;}
+.blue{border:1px solid rgba(43,164,218,1);}
+.red{border:1px solid rgba(255,0,0,.75);}

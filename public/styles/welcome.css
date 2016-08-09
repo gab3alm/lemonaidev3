@@ -1,0 +1,25 @@
+.title{
+	font-family:lato;
+	font-size:2em;
+	text-transform: capitalize;
+}
+
+.card-image{
+	margin-top:20px;
+}
+
+.card{
+	min-height:320px;
+}
+
+.card-icon{
+	margin-top:10px !important;
+	height:100px;
+}
+
+.card-information{
+	font-family: lato;
+	font-size:1.2em;
+	color:rgba(255,255,255,.8);
+	text-align: left;
+}

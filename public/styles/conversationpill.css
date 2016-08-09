@@ -1,0 +1,44 @@
+.row, .collection{
+	padding:0px;
+	margin:0px;
+	border:none;
+}
+
+.collection-item{
+	position:relative;
+	background-color:transparent;
+	border-top:1px solid rgba(46,67,84,1);
+	border-bottom:1px solid rgba(46,67,84,1);
+	border-right:none;
+	border-left:none;
+	width:90%;
+	margin-left:10px;
+}
+
+.row:hover{
+	background-color:rgba(40, 139,183, 1);
+}
+
+.collection-item:hover{
+	border:none;
+}
+
+.title{
+	font-family:lato;
+	font-size:1.2em;
+	color:white;
+	text-transform: capitalize;
+
+	width:100%;
+	height:20px;
+	text-overflow: ellipsis;
+}
+
+.lastmessage{
+	width:100% !important;
+	text-overflow:ellipsis;
+
+	font-family:Karla;
+	font-size:1em;
+	color:rgba(255,255,255,.5);
+}

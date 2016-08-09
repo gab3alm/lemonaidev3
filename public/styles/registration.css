@@ -1,0 +1,51 @@
+html,body{
+	height:100vh;
+}
+
+.container-fluid{
+	height:100vh;
+	position:relative;
+}
+
+.bkgimage{
+	opacity:.15;
+	position:absolute;
+	height:100vh;
+	width:100%;
+	z-index:-1;
+	background-image:url('images/lembkg3.jpg');
+	background-size:cover;
+}
+
+.form-container{
+	padding-top:60px;
+}
+
+.main-title{
+	font-family:lato;
+	font-size:2em;
+	color:rgba(0,0,0,.75);
+	text-transform: capitalize;	
+	margin:0px 0px 0px 15px;
+}
+
+.info-message{
+	font-family:Karla;
+	font-size:1.2em;
+	color:rgba(0,0,0,.75);
+	margin:0px 0px 10px 20px;
+}
+
+.error{
+	font-family:lato;
+	font-size:1em;
+	color:red;
+	margin:0px 0px 20px 10px;
+	text-transform: capitalize;
+}
+
+
+/*.green{border:1px solid rgba(104,196,43,1);}
+.yellow{border:1px solid yellow;}
+.blue{border:1px solid rgba(43,164,218,1);}
+.red{border:1px solid rgba(255,0,0,.75);}*/

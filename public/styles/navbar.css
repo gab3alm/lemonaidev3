@@ -1,0 +1,47 @@
+nav{
+	background-color:transparent;
+	box-shadow: none;
+	height:100%;
+}
+
+.navbar{
+	background-color:rgba(29,35,42,1) !important;
+	height:100px;
+	margin-bottom:0px;
+	overflow:hidden;
+}
+
+.lemonaide-logo{
+	position:relative;
+	z-index:5;
+	height:60px;
+	margin-top:20px;
+	padding:0px;
+}
+
+.nav-link-cont{
+	height:100%;
+}
+
+.badge{
+	/*background-color:rgba(104,196,43,1) !important;*/
+	background-color:rgba(43,164,218,1) !important;
+}
+
+.nav-links{
+	margin-top:20px;
+	font-family:lato;
+	font-size:1.2em;
+	text-transform: capitalize;
+	color:white;
+}
+
+.green-border{
+	height:100%;
+	border-bottom:5px solid rgba(104,196,43,1);
+}
+
+.blue-border{
+	height:100%;
+	border-bottom:5px solid rgba(43,164,218,1);
+}

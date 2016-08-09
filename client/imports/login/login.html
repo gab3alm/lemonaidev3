@@ -1,0 +1,55 @@
+<div class="container-fluid">
+	<div class="background-layer"></div>
+	<div class="row">
+		<div class="col s8 push-s2 l4 push-l4">
+			<div class="card">
+				<div class="card-content">
+					<!-- LOGIN FORM -->
+					<form (ngSubmit)="validateLogin(username, password)" #flog='ngForm'>
+						<!-- APP LOGO -->
+						<div class="row center-align">
+							<img class="logo animated flip" src="images/lemonaide-logo-old.svg" alt="Lemonaide logo">
+						</div>
+						<!-- USERNAME -->
+						<div class="row">
+							<div class="input-field col s10 push-s1">
+								<input [(ngModel)]="username" name="username" id="username" type="text" class="validate" required>
+								<label for="username">Username</label>
+							</div>
+						</div>
+
+						<!-- PASSWORD -->
+						<div class="row">
+							<div class="input-field col s10 push-s1">
+								<input [(ngModel)]="password" name="password" id="password" type="password" class="validate" required>
+								<label for="password">Password</label>
+							</div>
+						</div>
+
+						<!-- ERROR MESSAGE -->
+						<div *ngIf="incorrect" class="row"><div class="col s12">
+							<p class="error animated" [ngClass]='{bounce: movement}'>
+								Incorrect username or password!
+							</p>
+						</div></div>
+
+
+						<div class="row">
+							<!-- SIGN IN BUTTON -->
+							<div class="col s12 center-align">
+								<button type="submit" class="btn teal lighten-2">Login</button>	
+								<!-- <button class="btn teal lighten-2" [routerLink]="['registration']">Register</button>	 -->
+							</div>
+							<!-- OTHER BUTTONS -->
+							<div class="col s12 center-align">
+								<div class="forgot-holder">
+									<!-- <a class="forgot-password" [routerLink]="['recoverPassword']">Forgot Password?</a> -->
+								</div>
+							</div>
+						</div>	
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

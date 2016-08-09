@@ -1,0 +1,44 @@
+.conversation-pill-area{
+	height:calc(100vh - 125px);
+	overflow-x:hidden;
+	overflow-y:scroll;
+	background-color:rgba(36,42,49,1);
+
+	margin:0px;
+	padding:0px;
+}
+
+.conversation-messages-area{
+	height:calc(100vh - 125px);
+	overflow-x:hidden;
+	overflow-y:scroll;
+	background-color:rgba(242,248,249,1);
+}
+
+.addConversationbtn{
+	height:20px;
+	position:absolute;
+	top:12px;
+	right:10px;
+}
+
+/*PILL COMPONENT (CONVERSATIONS)*/	
+.collection{
+	max-height:50px !important;
+	padding:0px;
+	margin:0px;
+	border:none;
+}
+
+.collection-item{
+	background-color:transparent;
+	text-align:center;
+	position:relative;
+}
+
+.title{
+	/*Font information*/
+	font-family:lato;
+	font-size:1.4em;
+	color:white;
+}

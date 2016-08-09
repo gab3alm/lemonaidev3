@@ -1,0 +1,17 @@
+.area-title{
+	font-family:lato;
+	font-size:2em;
+	text-transform: capitalize;
+	margin:0px;
+	padding:0px;
+}
+
+.section-title{
+	font-family:karla;
+	font-size:1.8em;
+	text-transform: capitalize;
+	text-align:center;
+	padding:0px;
+	margin:0px;
+}
+

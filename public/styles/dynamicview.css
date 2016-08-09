@@ -1,0 +1,16 @@
+.rulers{
+	margin-top:-20px;
+	padding:0px;
+}
+
+.ruler{
+	width:24%;
+	display:inline-block;
+	margin-left:-10px;
+	padding:0px;
+}
+
+.green{border:1px solid rgba(104,196,43,1);}
+.yellow{border:1px solid yellow;}
+.blue{border:1px solid rgba(43,164,218,1);}
+.red{border:1px solid rgba(255,0,0,.75);}

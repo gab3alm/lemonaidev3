@@ -1,0 +1,31 @@
+.row{
+	margin:0px;
+	padding:0px;
+}
+
+.footer{
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	max-height:50px;
+	background-color:rgba(29,35,42,1);
+}
+
+.green{
+	border-top:5px solid rgba(104,196,43,1);
+}
+
+.blue{
+	border-top:5px solid rgba(43, 164, 218, 1);
+}
+
+.credits{
+	text-align:center;
+	margin-top:10px !important;
+	color:white;
+	font-family:lato;
+	font-size:1em;
+	text-transform: capitalize;
+	margin:0px !important;
+}

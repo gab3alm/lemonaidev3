@@ -1,0 +1,103 @@
+.avatar-container{
+	max-height:100px;
+	position:relative;
+	z-index:5;
+}
+
+.user-avatar{
+	height:80px;
+	width:80px;
+	border-radius:50%;
+	margin-top:10px;
+	padding:0px;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+.avatar-information{
+	position:absolute;
+	top:0px;
+	left:90px;
+	width:300px;
+	margin-top:20px;
+}
+
+.text{
+	font-family:lato;
+	text-transform:capitalize;
+	margin:0px;
+	padding:0px;
+}
+
+.user-welcome{
+	font-size:1.6em;
+	color:white;
+}
+
+.user-status{
+	margin-top:-5px;
+	font-size:1.2em;
+	color:rgba(50,205,50,1);
+	display:inline-block;
+}
+
+.user-timeout{
+	display:inline-block;
+	height:15px;
+	padding-top:2px;
+}
+
+.timeIn{
+	transform:rotateY(180deg);
+}
+
+.cust-btn{
+	border-radius:20px;
+}
+
+
+/*MODAL STRUCTURE RULES*/
+#timeout-modal{
+	border-radius: 10px;
+	width:400px;
+	overflow:hidden;
+}
+
+.availability-input{
+	margin-top:50px !important;
+}
+
+.modal-content{
+	margin:0px;
+	padding:0px;
+}
+
+.modal-header{
+	background-color:rgba(29,35,42,1);
+	height:40px;
+}
+
+.modal-title{
+	font-family:lato;
+	font-size:1.4em;
+	color:white;
+	text-transform: capitalize;
+
+	margin:0px;
+	text-align:center;
+}
+
+.cust-btn{
+	font-family:lato;
+	font-size:1.2em;
+	background-color:transparent;
+	border: 1px solid rgba(43,164,218,1);
+	color: rgba(43,164,218,1);
+	border-radius: 20px;
+	width:100px;
+}
+
+.cust-btn:hover{
+	background-color:rgba(43,164,218,.2);;
+}

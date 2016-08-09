@@ -1,0 +1,89 @@
+.collection-item{
+	position:relative;
+}
+
+.task-title{
+	font-family:lato;
+	font-size:1.3em;
+	text-transform: capitalize;
+	margin:0px;
+
+	border-bottom:1px solid rgba(0,0,0,.2);
+	width:90%;
+	padding-right:20px;
+	color:rgba(0,0,0,1);
+}
+
+.task-description{
+	font-family:Karla;
+	font-size:1.1em;
+	margin:0px;
+	padding:10px 10px 0px 10px;
+	color:rgba(0,0,0,.8);
+}
+
+.task-duedate{
+	margin:20px 0px 0px 0px;
+	padding:0px;
+
+	font-family:karla;
+	font-size:.9em;
+	text-align:right;
+	color:rgba(0,0,0,.8);
+}
+
+.sender-info{
+	margin:0px;
+	
+	border-top:1px solid rgba(0,0,0,.2);
+	color:rgba(0,0,0,.4);
+	font-family:karla;
+	font-size:.8em;
+	text-align:right;
+	text-transform: capitalize;
+}
+
+.delete-task{
+	position:absolute;
+	top:5px;
+	right:5px;
+	height:20px;
+	display:none;
+}
+
+.collection-item:hover > .delete-task{
+	display:inline-block;
+}
+
+.cust-btn{
+	font-family:lato;
+	font-size:1em;
+	text-transform: capitalize;
+
+	border:1px solid rgba(40,139,183,1);
+	background-color:transparent;
+	color:rgba(40,139,183,1);
+	border-radius: 20px;
+}
+
+.status-holder{
+	position:absolute;
+	top:5px;
+	right:35px;
+	z-index:10;
+}
+
+.status-option{
+	font-family:lato;
+	font-size:1em;
+	
+	padding:0px;
+	margin:5px 0px 0px 0px;
+	text-align:center;
+}
+
+.collapsible-header{
+	font-family:lato;
+	font-size:1em;
+}
+

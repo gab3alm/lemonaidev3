@@ -1,0 +1,16 @@
+.projects-area{
+	height:calc(100vh - 125px);
+	overflow-x:hidden;
+	overflow-y:scroll;
+	background-color:rgba(36,42,49,1);
+
+	margin:0px;
+	padding:0px;
+}
+
+.kanban-area{
+	height:calc(100vh - 125px);
+	overflow-x:hidden;
+	overflow-y:scroll;
+	background-color:rgba(242,248,249,1);
+}
