@@ -1,0 +1,63 @@
+<div class="row center-align">
+	<p class="title">welcome to lemonaide</p>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col m12 l4">
+			<div class="card small hoverable">
+				<div class="card-image">
+					<img class="card-icon" src="images/directory.svg">
+				</div>
+				<div class="card-content">
+					<p class="card-information">
+						Want to know who is present and who is away? Check the directory section out.
+						Within this section, you can quickly see who is present within the office. 
+					</p>
+				</div>
+				<div class="card-action">
+					<a [routerLink]="['/home/directory']">Directory</a>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="col m12 l4">
+			<div class="card small hoverable">
+				<div class="card-image">
+					<img class="card-icon" src="images/messages.svg">
+				</div>
+				<div class="card-content">
+					<p class="card-information">
+						Want to send a quick message to a student or staff?
+						In the messages section you can start a conversation, reply
+						to a message.
+					</p>
+				</div>
+				<div class="card-action">
+					<a [routerLink]="['/home/conversations']">Messages</a>
+				</div>
+			</div>
+
+
+
+		</div>
+		<div class="col m12 l4">
+			<div class="card small hoverable">
+				<div class="card-image">
+					<img class="card-icon" src="images/notes.svg">
+				</div>
+				<div class="card-content">
+					<p class="card-information">
+						Whether you want to create reminders for yourself or assign tasks to students.
+						You can use this section to boost the productivity of everyone in your team.
+					</p>
+				</div>
+				<div class="card-action ">
+					<a [routerLink]="['/home/tasks']">Notes</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

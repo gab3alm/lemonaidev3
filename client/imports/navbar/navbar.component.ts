@@ -1,4 +1,4 @@
-import {Component, Input, NgZone} from '@angular/core';
+import {Component, Input, NgZone, OnInit} from '@angular/core';
 import {Mongo} from 'meteor/mongo';
 import {UserAvatar} from './user-avatar.component';
 import {ROUTER_DIRECTIVES, Router} from '@angular/router';
@@ -17,23 +17,27 @@ import template from './navbar.html';
 	styleUrls:['styles/navbar.css']
 })
 
-export class NavbarComponent extends MeteorComponent{
+export class NavbarComponent extends MeteorComponent implements OnInit{
 	currUser: Mongo.Cursor<Object>;
-	unreadMessages:number = 0;
-	unreadTasks:number = 0;
-	constructor(public router: Router){
+	unreadMessages:number;
+	unreadTasks:number;
+	
+	constructor(public router: Router, private ngZone:NgZone){
 		super();
+	}
+
+	ngOnInit(){
 		this.subscribe('user', Meteor.userId(), ()=>{
-			// this.currUser = Users.find({"_id":Meteor.userId()});
+			this.currUser = Users.find({"_id":Meteor.userId()});
 			var convsubRef = Users.find({"_id":Meteor.userId()}).fetch()[0].profile.conversationSubs;
-			
 			this.subscribe('conversationSubscriptions', convsubRef, ()=>{
 				// Make the fetch reactive.(conversationSubscription - unread field)
 				this.autorun(()=>{
-					this.unreadMessages = ConversationSubscriptions.find({'_id':convsubRef}).fetch()[0].unread;
+					this.ngZone.run(()=>{
+						this.unreadMessages = ConversationSubscriptions.find({'_id':convsubRef}).fetch()[0].unread;
+					});
 				}, true);
 			});
-
 		});
 	}
 

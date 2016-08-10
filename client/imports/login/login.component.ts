@@ -25,7 +25,7 @@ export class LoginComponent{
 	movement:boolean = false;
 
 	constructor(public router:Router,
-		private LoginServices:LoginServices){}
+		public LoginServices:LoginServices){}
 
 	validateLogin(username, password){
 		this.LoginServices.validateLogin(username, password);

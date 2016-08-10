@@ -6,7 +6,7 @@ import {Users} from '../../../both/collections/users';
 
 @Injectable()
 export class LoginServices{
-	constructor(private router:Router){}
+	constructor(public router:Router){}
 	// Meteor Method - API 
 	// (http://docs.meteor.com/api/accounts.html#Meteor-loginWithPassword)
 	public validateLogin(username:string, password:string){

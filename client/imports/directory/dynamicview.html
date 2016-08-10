@@ -1,0 +1,18 @@
+<div class="container-fluid">
+	<div class="row animated bounce">
+		<dynamic-avatar *ngFor="let s of Staff" [staff]="s"></dynamic-avatar>
+	</div>	
+
+	<div class="row center-align rulers">
+		<hr class="ruler green">
+		<hr class="ruler yellow">
+		<hr class="ruler blue">
+		<hr class="ruler red">	
+	</div>
+
+	<div class="row">
+		<student-card *ngFor="let s of StudentList" [student]="s"></student-card>
+	</div>
+</div>
+
+

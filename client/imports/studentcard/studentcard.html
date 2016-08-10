@@ -1,0 +1,84 @@
+<div class="col s12 m6 l3">
+	<div class="student-card hoverable animated" [ngClass]="{flip: flipIt,bounce: !defaultIt}">
+		<!-- <img [src]="student.image" class="student-image" [ngClass]="{opaque: flipIt}"> -->
+		<div [ngStyle]="{'background-image': 'url('+student.profile.image+')'}" class="student-image" [ngClass]="{opaque: flipIt}">
+
+			<!-- |||||||||||||||||||||||||||||||||||||||||||||| -->
+			<!-- STUDENT INFORMATION (FRONT SIDE - CARD)-->
+			<!-- |||||||||||||||||||||||||||||||||||||||||||||| -->
+			<div class="student-information" *ngIf="!flipIt" >
+				<!-- Airplane message image -->
+				<img src="images/send-message.svg" alt="" class="send-message tooltipped" materialize="tooltip"  data-position="right" data-delay="50" data-tooltip="Message Me" (click)="Flip()">
+
+				<p class="text student-name">
+					{{student.profile.firstname}} {{student.profile.lastname}} 
+				</p>
+				<!-- Display conditions for the student statusball -->
+				<div [ngSwitch]="student.profile.presence" style="display:inline-block;">
+					<template [ngSwitchCase]="1">
+						<div class="statusball present tooltipped" materialize="tooltip"  data-position="right" data-delay="50" data-tooltip="Available"></div>
+					</template>
+					<template ngSwitchDefault>
+						<div class="statusball absent tooltipped" materialize="tooltip"  data-position="right" data-delay="50" data-tooltip="Not available"></div>
+					</template>
+				</div>
+
+				<p class="text student-title"> {{student.profile.title}} </p>
+				<!-- Display conditions for student status message -->
+				<p *ngIf="student.profile.leaveReason!=''" class="text student-status away">
+					Away: {{student.profile.leaveReason}}
+				</p>
+			</div>	
+
+
+			<!-- |||||||||||||||||||||||||||||||||||||||||||||| -->
+			<!-- SEND STUDENT MESSAGE (BACK SIDE - CARD)-->
+			<!-- |||||||||||||||||||||||||||||||||||||||||||||| -->
+			<div class="student-message animated" *ngIf="flipIt" [ngClass]="{fadeIn: flipIt}">
+				<!-- CANCEL IMAGE -->
+				<img (click)="resetCard()" class="cancel-command tooltipped" materialize="tooltip"  data-position="right" data-delay="50" data-tooltip="Cancel Message" src="images/multiply.svg" alt="cancel the message">
+
+				<!-- STUDENT NAME -->
+				<p class="text student-name">{{student.profile.firstname}} {{student.profile.lastname}}</p>
+
+				<!-- STUDENT STATUS BALL -->
+				<div [ngSwitch]="student.profile.presence" style="display:inline-block;">
+					<template [ngSwitchCase]="1">
+						<div class="statusball present tooltipped" materialize="tooltip"  data-position="right" data-delay="50" data-tooltip="Available"></div>
+					</template>
+					<template ngSwitchDefault>
+						<div class="statusball absent tooltipped" materialize="tooltip"  data-position="right" data-delay="50" data-tooltip="Not Available"></div>
+					</template>
+				</div>
+
+				<!-- STUDENT TITLE -->
+				<p class="text student-title"> {{student.profile.title}} </p>
+
+				<!-- STUDENT STATUS MESSAGE -->
+				<p *ngIf="student.profile.leaveReason!=''" class="text student-status away">
+					Away: {{student.profile.leaveReason}}
+				</p>
+
+				<!-- MESSAGE TO BE SENT TO STUDENT -->
+				<form materialize class="message-form col s12">
+					<div class="row">
+						<!-- Conversation Title -->
+						<div class="input-field">
+							<input [(ngModel)]="conversationTitle" name="conversationTitle" id="conversationTitle" type="text" class="validate">
+							<label class="lem-SM" for="conversationTitle">Enter Title</label>
+						</div>
+						<div class="input-field">
+							<textarea [(ngModel)]='message' name="message" id="STUDENT-MESSAGE" class="materialize-textarea"></textarea>
+							<label class="lem-SM" for="STUDENT-MESSAGE">Enter Message</label>
+						</div>
+					</div>
+				</form>
+
+				<!-- SEND MESSAGE BUTTON -->
+				<div class="row center-align">
+					<button [ngClass]="{disabled:!message}" (click)="sendMessage()" [disabled]="!message" class="cust-send">send message</button>
+				</div>
+			</div><!-- END OF STUDENT MESSAGE -->
+
+		</div>
+	</div>

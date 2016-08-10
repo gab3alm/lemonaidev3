@@ -1,0 +1,178 @@
+<div class="container-fluid">
+	<div class="bkgimage"></div>
+	<div class="row">
+		<div class="form-container">
+			<form class="z-depth-1" (ngSubmit)="registerUser()" method="POST">
+				<!-- PART 1 (ACCOUNT INFO)-->
+				<div class="col s10 push-s1 l4">
+					<div class="row">
+						<p class="main-title">create your account</p>
+						<p class="info-message">You are a few steps away from enjoying Lemonaide</p>						
+						<!-- |||||||||||||||||||||| -->
+						<!-- USERNAME							  -->
+						<!-- |||||||||||||||||||||| -->
+						<div class="input-field col s12">
+							<input [(ngModel)]="username" name="username" id="username" type="text" class="validate" required>
+							<label for="username">Enter username</label>
+						</div>
+
+						<!-- |||||||||||||||||||||| -->
+						<!-- OG PASSWORD						-->
+						<!-- |||||||||||||||||||||| -->				
+						<div class="input-field col s12">
+							<input #pass1="ngModel" [(ngModel)]="password" name="password" id="password" type="password" class="validate" required>
+							<label for="password">Enter password</label>
+						</div>
+
+						<!-- |||||||||||||||||||||| -->
+						<!-- RETYPE OG PASSWORD			-->
+						<!-- |||||||||||||||||||||| -->
+						<div class="input-field col s12">
+							<input #pass2="ngModel" [(ngModel)]="password2" name="password2" id="passwordRetype" type="password" class="validate" required>
+							<label for="passwordRetype">Retype password</label>
+						</div>
+
+						<!-- PASSWORD NOT MATCHING ERROR -->
+						<div *ngIf=" ( password != password2 ) && (pass1.touched && pass2.touched)">
+							<p class="error">passwords don't match</p>
+						</div>
+
+						<!-- |||||||||||||||||||||| -->
+						<!-- CATEGORY SELECTION: STUDENT | STAFF-->
+						<!-- |||||||||||||||||||||| -->
+						<div class="input-field col s12">
+							<select [(ngModel)]="category" name="category" materialize="material_select" [materializeSelectOptions]="categoryOptions" required>
+								<option value="" disabled selected>Select your option</option>
+								<option *ngFor="let option of categoryOptions" [value]="option">{{option | capitalize}}</option>
+							</select>
+							<label>Employment Status</label>
+						</div>									
+					</div>
+				</div>		
+				<!-- PART 1 - END -->
+
+				<!-- PART 2 - MORE ABOUT USER -->
+				<div *ngIf="category" class="col s10 push-s1 l4">
+					<div [ngClass]="{slideInLeft: category}" class="row animated">
+						<p [ngClass]="{bounce: category}" class="main-title animated">tell us about yourself</p>
+						<p class="info-message">Almost there...</p>	
+						<!-- |||||||||||||||||||||| -->
+						<!-- FIRSTNAME							  -->
+						<!-- |||||||||||||||||||||| -->
+						<div class="input-field col s12" >
+							<input [(ngModel)]="firstname" name="firstname" id="firstname" type="text" class="validate" required>
+							<label for="firstname">Enter First name</label>
+						</div>
+
+
+						<!-- |||||||||||||||||||||| -->
+						<!-- LASTNAME							  -->
+						<!-- |||||||||||||||||||||| -->
+						<div class="input-field col s12">
+							<input [(ngModel)]="lastname" name="lastname" id="lastname" type="text" class="validate" required>
+							<label for="lastname">Enter Last name</label>
+						</div>
+
+						<!-- |||||||||||||||||||||| -->
+						<!-- JOB TITLE							  -->
+						<!-- |||||||||||||||||||||| -->
+						<div class="input-field col s12">
+							<input [(ngModel)]="title" name="title" id="title" type="text" class="validate" required>
+							<label for="title">Enter Job Title</label>
+						</div>
+
+						<!-- |||||||||||||||||||||| -->
+						<!-- SUPERVISOR - STUDENT ONLY-->
+						<!-- |||||||||||||||||||||| -->
+						<div *ngIf="category == 'student'" class="input-field col s12">
+							<select [(ngModel)]="supervisor" name="supervisor" materialize="material_select" [materializeSelectOptions]="supervisorOptions" required>
+								<option value="" disabled selected>Select your option</option>
+								<option *ngFor="let option of supervisorOptions" [value]="option.username">
+									{{option.profile.firstname | capitalize}}
+									{{option.profile.lastname | capitalize}}
+								</option>
+							</select>
+							<label>Select your supervisor</label>
+						</div>
+
+						<!-- |||||||||||||||||||||| -->
+						<!-- DEPARTMENT SELECTION 	-->
+						<!-- |||||||||||||||||||||| -->
+						<div class="input-field col s12">
+							<select [(ngModel)]="department" name="department" materialize="material_select" [materializeSelectOptions]="departmentOptions" required>
+								<option value="" disabled selected>Select your option</option>
+								<option *ngFor="let option of departmentOptions" [value]="option">{{option | capitalize}}</option>
+							</select>
+							<label>Select your department</label>
+						</div>
+
+
+
+
+					</div>
+				</div>
+				<!-- PART 2 - END -->
+
+
+				<!-- PART 3 - PASSWORD RECOVERY INFO -->
+				<div *ngIf="department" class="col s10 push-s1 l4">
+					<div [ngClass]="{slideInLeft: department, bounce: category}" class="row animated">
+						<p [ngClass]="{bounce: category}" class="main-title animated">Just in case</p>
+						<p class="info-message">
+							Please create a security question and enter the answer for it
+						</p>
+						<!-- |||||||||||||||||||||| -->
+						<!-- SECURITY QUESTION 			-->
+						<!-- |||||||||||||||||||||| -->
+						<div class="input-field col s12">
+							<input [(ngModel)]="securityQuestion" name="securityQuestion" id="secQues" type="text" class="validate" required>
+							<label for="secQues">Enter Question</label>
+						</div>
+						<!-- |||||||||||||||||||||| -->
+						<!-- SECURITY ANSWER				-->
+						<!-- |||||||||||||||||||||| -->
+						<div class="input-field col s12">
+							<input [(ngModel)]="securityAnswer" name="securityAnswer" id="secAns" type="text" class="validate" required>
+							<label for="secAns">Enter Answer</label>
+						</div>
+					</div>
+
+					<p class="info-message">
+						<small>
+							Lemonaide does not keep track of emails. In the event that you were 
+							to forget your password, we would use this question and answer in order 
+							to verify your ownership of the account. 
+						</small>
+					</p>
+
+					<p *ngIf="existing" class="error">
+						The username: {{username}}, has already been taken.
+						<br>
+						Please select another one. 
+					</p>
+
+					<p *ngIf="success">
+						Your account has been successfully created!
+						Please Login with your new credentials.
+						<a [routerLink]="['/']">Login</a>
+					</p>
+
+					<div class="row center-align">
+						<button type="submit" class="btn">Submit</button>
+					</div>
+				</div>
+			</div>
+
+
+
+			
+
+
+		</form>
+
+
+
+
+
+	</div>
+</div>

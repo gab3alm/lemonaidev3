@@ -1,6 +1,7 @@
 <div class="row navbar">
   <div class="col m3 l2 center-align green-border hide-on-med-and-down">
-    <img [routerLink]="['/home']" class="lemonaide-logo " src="images/lemonaide-logo.svg" alt="Lemonaide logo">
+    <!-- <img [routerLink]="['/home']" class="lemonaide-logo " src="images/lemonaide-logo.svg" alt="Lemonaide logo"> -->
+    <img class="lemonaide-logo " src="images/lemonaide-logo.svg" alt="Lemonaide logo">
   </div>
 
   <div class="col m12 l10 blue-border">
@@ -19,7 +20,8 @@
         <ul id="nav-mobile" class="right">
 
           <li class="nav-link-cont">
-            <a class="nav-links" [routerLink]="['help']">help</a>
+            <!-- <a class="nav-links" [routerLink]="['help']">help</a> -->
+            <a class="nav-links">help</a>
           </li>
 
           <li class="nav-link-cont">
@@ -27,13 +29,19 @@
           </li>
 
           <li class="nav-link-cont">
-            <a class="nav-links" [routerLink]="['conversations']">
+            <!-- <a class="nav-links" [routerLink]="['conversations']">
+              conversations <span *ngIf="unreadMessages != 0" class="new badge"> {{unreadMessages}} </span>
+            </a> -->
+            <a class="nav-links">
               conversations <span *ngIf="unreadMessages != 0" class="new badge"> {{unreadMessages}} </span>
             </a>
           </li>
 
           <li class="nav-link-cont">
-            <a class="nav-links" [routerLink]="['tasks']">
+            <!-- <a class="nav-links" [routerLink]="['tasks']">
+              tasks <span *ngIf="unreadTasks != 0" class="new badge">{{unreadTasks}}</span>
+            </a> -->
+            <a class="nav-links">
               tasks <span *ngIf="unreadTasks != 0" class="new badge">{{unreadTasks}}</span>
             </a>
           </li>

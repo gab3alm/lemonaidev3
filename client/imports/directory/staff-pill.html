@@ -1,0 +1,76 @@
+<div class="row">
+	<ul [routerLink]="['/home/directory']" class="collection">
+		<li class="collection-item">
+			<img src="images/present.svg" alt="" class="avatar">
+			<span class="name flow-text"> LiveView </span>
+			<!-- STAFF STATUS DISPLAY -->
+			<p class="status absent flow-text">
+				Students Present
+			</p>
+		</li>
+	</ul>
+</div>
+
+<div class="row" *ngFor="let s of stafflist">
+
+
+	<ul [routerLink]="['/home/directory', s.username]" class="collection">
+		<li class="collection-item">
+			<img [src]="s.profile.image" alt="" class="avatar">
+			<span class="name flow-text"> {{s.profile.firstname}} {{s.profile.lastname}} </span>
+			<!-- STAFF STATUS DISPLAY -->
+			<p *ngIf="s.profile.presence == 0" class="status absent flow-text">
+				Not Present
+			</p>
+			<p *ngIf="s.profile.presence == 1 && s.profile.leaveReason==''" class="status present flow-text">
+				Present
+			</p>
+			<p *ngIf="s.profile.presence == 1 && s.profile.leaveReason!=''" class="status away flow-text">
+				Away: {{s.profile.leaveReason}}
+			</p>
+			<!-- END STAFF STATUS DISPLAY -->
+
+			<div class="staff-message-holder" materialize="leanModal" [materializeParams]="[{dismissible: true}]" [attr.href]="'#' +s.username">	
+				<img src="images/send-message.svg" class="staff-message tooltipped" materialize="tooltip"  data-position="right" data-delay="50" data-tooltip="Message Me" alt="">
+			</div>	
+		</li>
+	</ul>
+
+
+	<!-- SEND STAFF MESSAGE MODAL -->
+	<!-- Modal Structure -->
+	<div [attr.id]="s.username" class="modal staff-send-message">
+		<div class="modal-content">
+			<div class="modal-header">
+				<p>Message to {{s.profile.firstname}} {{s.profile.lastname}} </p>
+				<img (click)="cancelMessage()" src="images/cancel2.svg" class="cancel-action hoverable tooltipped modal-action modal-close" materialize="tooltip"  data-position="right" data-delay="50" data-tooltip="Cancel Message" alt="cancel message">
+			</div>
+			<div class="message-insertion">
+				<img [src]="s.profile.image" class="message-staff-image">
+				<div class="input-field col s7">
+					<input [(ngModel)]="conversationTitle" name="conversationTitle" id="title" type="text" class="validate">
+					<label class="lem-SM" for="title">Title</label>
+				</div>		
+				<div class="input-field col s7">
+					<textarea [(ngModel)]="message" name="message" id="message-text" class="materialize-textarea"></textarea>
+					<label class="lem-SM" for="message-text">Enter Message</label>
+					<div class="center-align">
+						<button [ngClass]="{disabled:!message}" (click)="sendMessage(conversationTitle, s._id, message)" [disabled]="!message" class="cust-btn modal-action modal-close">
+							Send Message
+						</button>	
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+
+</div>
+
+
+
+

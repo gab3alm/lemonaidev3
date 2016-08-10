@@ -1,0 +1,21 @@
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="section-title-holder">
+			<p class="section-title">live view</p>
+			<p class="description">currently present students</p>
+		</div>
+	</div>
+	
+	<div class="row center-align rulers">
+		<hr class="ruler green">
+		<hr class="ruler yellow">
+		<hr class="ruler blue">
+		<hr class="ruler red">	
+	</div>
+	
+
+	<div class="row">
+		<student-card *ngFor="let st of StudentsPresent" [student]="st"></student-card>
+	</div>
+</div>

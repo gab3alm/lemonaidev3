@@ -27,3 +27,4 @@ materialize:materialize@=0.97.6
 natestrauser:animate-css
 accounts-password
 session
+momentjs:moment
