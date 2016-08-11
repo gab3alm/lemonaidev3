@@ -32,9 +32,9 @@
       "resolved": "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.0.0-rc.4.tgz"
     },
     "@angular/router": {
-      "version": "3.0.0-alpha.8",
-      "from": "@angular/router@3.0.0-alpha.8",
-      "resolved": "https://registry.npmjs.org/@angular/router/-/router-3.0.0-alpha.8.tgz"
+      "version": "3.0.0-beta.2",
+      "from": "@angular/router@3.0.0-beta.2",
+      "resolved": "https://registry.npmjs.org/@angular/router/-/router-3.0.0-beta.2.tgz"
     },
     "angular2-materialize": {
       "version": "3.0.3",
