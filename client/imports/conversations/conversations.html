@@ -1,0 +1,85 @@
+<div class="container-fluid">
+	<div class="row">
+		<!-- STAFF PILL SECTION -->
+		<div class="col s6 m4 l2 conversation-pill-area">
+			<ul class="collection">
+				<li class="collection-item">
+					<span class="title">Conversations</span>
+					<div materialize="leanModal" [materializeParams]="[{dismissible: true}]" class="modal-trigger" href="#NewConversation">
+						<img materialize="tooltip" class="addConversationbtn tooltipped"  src="images/add.svg" data-position="right" data-delay="50" data-tooltip="Create Message" alt="new conversation">
+					</div>
+				</li>
+			</ul>
+			<conversation-pill *ngFor=" let cp of userConversations" [reference]="cp"></conversation-pill>
+		</div>
+		
+		<!-- STAFF's STUDENTS AREA -->
+		<div class="col s6 m8 l10 conversation-messages-area">
+			<router-outlet></router-outlet>
+		</div>	
+	</div>
+	
+</div>
+
+
+
+
+
+
+
+
+<!-- Modal Structure -->
+<div id="NewConversation" class="modal">
+	<div class="modal-content">
+		<p class="modal-title">New Conversation</p>
+		<!-- SEND TO (CATEGORY) -->
+		<div class="row">
+			<input (click)="setMessageCategory('staff')" name="category-selection" class="with-gap" type="radio" id="staffMessage"/>
+			<label for="staffMessage">Staff</label>
+			<input (click)="setMessageCategory('student')" name="category-selection" class="with-gap" type="radio" id="studentMessage"/>
+			<label for="studentMessage">Student</label>	
+		</div>
+		
+
+
+		<div *ngIf="messageCategory" class="row animated fadeIn">
+			<!-- SELECT STATEMENT WITH STAFF SELECTIONS -->
+			<div *ngIf="messageCategory == 'staff'" class="staff-message">
+				<label for="">Send Message To: </label>
+				<select [(ngModel)]="recipientID" name="recipientID" materialize="material_select" [materializeSelectOptions]="staffSelection">
+					<option value="" disabled selected>Select your option</option>
+					<option *ngFor="let option of staffSelection" [value]="option._id">{{option.profile.firstname | capitalize}} {{option.profile.lastname | capitalize}}</option>
+				</select>
+			</div>
+			
+
+			<!-- SELECT STATEMENT WITH STUDENT SELECTIONS -->
+			<div *ngIf="messageCategory == 'student'" class="staff-message">
+				<label for="">Send Message To: </label>
+				<select [(ngModel)]="recipientID" name="recipientID" materialize="material_select" [materializeSelectOptions]="studentSelection">
+					<option value="" disabled selected>Select your option</option>
+					<option *ngFor="let option of studentSelection" [value]="option._id">{{option.profile.firstname| capitalize}} {{option.profile.lastname| capitalize}}</option>
+				</select>
+			</div>
+
+
+			<!-- CONVERSATION TITLE -->
+			<div class="input-field col s12">
+				<input [(ngModel)]="conversationTitle" name="conversationTitle" id="conversationTitle" type="text" class="validate">
+				<label for="conversationTitle">Conversation Title</label>
+			</div>
+
+
+			<!-- CONVERSATION MESSAGE -->
+			<div class="input-field col s12">
+				<input [(ngModel)]="conversationMessage" name="conversationMessage" id="conversationMessage" type="text" class="validate">
+				<label for="conversationMessage">Conversation Message</label>
+			</div>
+			
+			<!-- SEND MESSAGE BUTTON -->
+			<a (click)="createNewConversation(recipientID, conversationTitle, conversationMessage)" class="btn teal lighten-2 modal-action modal-close">Send Message</a>
+		</div>
+
+
+	</div>
+</div>

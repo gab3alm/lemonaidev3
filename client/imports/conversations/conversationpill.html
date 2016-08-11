@@ -1,0 +1,9 @@
+<div class="row">
+	<ul class="collection">
+		<li class="collection-item avatar" (click)="navigate(reference)">
+			<img *ngIf="recipientImage" [src]="recipientImage" alt="" class="circle">
+			<span class="title">{{conversationTitle}}</span>
+			<p class="lastmessage">{{lastMessage}}</p>
+		</li>
+	</ul>
+</div>
