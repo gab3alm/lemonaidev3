@@ -1,5 +1,7 @@
 import {ConversationSubscriptions} from './conversationSubscriptions';
+import {ConversationSubscriptionModel} from '../models/conv.subscriptions.model';
 import {ConversationStreams} from './conversationStream';
+import {ConversationStreamsModel} from '../models/conv.streams.model';
 import {Users} from './users';
 import {Meteor} from 'meteor/meteor';
 import {Message} from '../classes/message';
@@ -47,10 +49,17 @@ function updateUnread(conversationID:string, recipientList:Array<string>){
 	}
 	//Update unread (ConversationStream Level)
 	for(var i = 0 ; i < recipientList.length; i++){
-		// ConversationStreams.update();
 	}
-
 }
+
+
+// Unsubscribe user from conversation
+function unsubscribeConversation(reference:string){
+	ConversationStreams.update({'_id':reference, 'subscribers':{$elemMatch: {'user':Meteor.userId()}}}, {
+		$set : {'subscribers.$.subscribed':0}
+	});
+}
+
 
 Meteor.methods({
 	// CREATES A NEW CONVERSATION
@@ -97,5 +106,41 @@ Meteor.methods({
 		ConversationStreams.update({"_id":conversationID}, {$addToSet:{
 			'messages':new Message(sent, senderName, message)
 		}});
+	},
+
+
+
+	// Delete Conversation
+	deleteConversation:function(conversationID:string, conversationStreamID:string){
+		// unsubscribe user in conversationStream
+		unsubscribeConversation(conversationStreamID);
+		// delete subscription from user conversationSubscriptions
+		var userConvSubs = Users.find({'_id':Meteor.userId()}).fetch()[0].profile.conversationSubs;
+		ConversationSubscriptions.update({'_id':userConvSubs}, {$pull : {
+			conversations : conversationID
+		}});
+	},
+
+
+	//Clear conversation unread count
+	clearConversationUnread:function(conversationStreamID:string){
+		//ConversationsStream Level
+		var subscribers = ConversationStreams.find({'_id':conversationStreamID}).fetch()[0].subscribers;
+		var unread = 0;
+		for(var i = 0; i < subscribers.length; i++){
+			if(subscribers[i].user == Meteor.userId()){
+				unread = subscribers[i].unread;
+			}
+		}
+		console.log(unread);
+		// ConversationStreams.update({'_id':conversationStreamID, 'subscribers':{$elemMatch: {'user':Meteor.userId()}}}, {
+		// 	$set : {'subscribers.$.unread':0}
+		// });
+		// ConversationSubscription Level
+		// var conversationSubsID = Users.find({'_id':Meteor.userId()}).fetch()[0].profile.conversationSubs;
+		// ConversationSubscriptions.update({'_id':conversationSubsID, 'subscribers':{$elemMatch: {'user':Meteor.userId()}}}, {
+		// 	$set : {'subscribers.$.unread':0}
+		// });
+
 	}
 })

@@ -61,7 +61,7 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 
 	ngOnInit(){
 		this.subscribe('StaffNames', ()=>{
-			this.supervisorOptions = Users.find({'profile.category':'staff'});
+			this.supervisorOptions = Users.find();
 		}, true);
 	}
 

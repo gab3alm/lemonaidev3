@@ -1,8 +1,12 @@
-<div class="row">
+<div *ngIf="conversation" class="row">
 	<ul class="collection">
 		<li class="collection-item avatar" (click)="navigate(reference)">
+			<img (click)="deleteConversation(conversation, reference)" materialize="tooltip" class="tooltipped delete" data-position="right" data-delay="50" data-tooltip="Delete Conversation" src="images/cancel2.svg" alt="delete conversation">
 			<img *ngIf="recipientImage" [src]="recipientImage" alt="" class="circle">
 			<span class="title">{{conversationTitle}}</span>
+			<div *ngIf="unread != 0" materialize="tooltip" class="tooltipped unread" data-position="right" data-delay="50" data-tooltip="Unread Messages">
+				{{unread}}
+			</div>
 			<p class="lastmessage">{{lastMessage}}</p>
 		</li>
 	</ul>
