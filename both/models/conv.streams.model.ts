@@ -5,13 +5,13 @@ export interface ConversationStreamsModel{
 	messages:Array<Message>;
 }
 
-interface Subscribers{
+export interface Subscribers{
 	user:string;
 	unread:number;
 	subscribed:number;
 }
 
-interface Message{
+export interface Message{
 	sent:Object; //Time message was sent
 	sender:string; //Username of sender
 	message:string; //Message!

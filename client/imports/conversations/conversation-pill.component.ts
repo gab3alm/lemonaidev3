@@ -26,6 +26,7 @@ export class ConversationpillComponent extends MeteorComponent implements OnInit
 	conversationTitle:string;
 	lastMessage:string;
 	unread:number;
+
 	constructor(private ngZone:NgZone, public router:Router){
 		super();
 	}
@@ -100,6 +101,7 @@ export class ConversationpillComponent extends MeteorComponent implements OnInit
 	// Delete the conversation
 	// ||||||||||||||||||||||||||||||||||
 	deleteConversation(conversation, conversationStream){
+		this.router.navigate(['home/conversations']);
 		var conversationID = conversation.fetch()[0]._id;
 		this.call('deleteConversation', conversationID, conversationStream);
 	}

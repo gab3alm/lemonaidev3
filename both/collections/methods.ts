@@ -47,11 +47,16 @@ function updateUnread(conversationID:string, recipientList:Array<string>){
 			'unread':1
 		}});
 	}
+
 	//Update unread (ConversationStream Level)
 	for(var i = 0 ; i < recipientList.length; i++){
+		if(Meteor.userId() != recipientList[i]){
+			ConversationStreams.update({'_id':conversationID, 'subscribers':{$elemMatch: {'user':recipientList[i]}}}, {
+				$inc : {'subscribers.$.unread':1}
+			});
+		}
 	}
 }
-
 
 // Unsubscribe user from conversation
 function unsubscribeConversation(reference:string){
@@ -103,9 +108,21 @@ Meteor.methods({
 		var senderName = getSenderName(sender);
 		var recipientList = getRecipient(conversationID, sender);
 		updateUnread(conversationID, recipientList);
+		
+		// insert message into ConversationStream
 		ConversationStreams.update({"_id":conversationID}, {$addToSet:{
 			'messages':new Message(sent, senderName, message)
 		}});
+
+		// insert conversation into recipient if they have deleted it
+		for(var i = 0; i < recipientList.length; i++){
+			if(recipientList[i] != Meteor.userId()){
+				var convSubsID = Users.find({'_id':recipientList[i]}).fetch()[0].profile.conversationSubs;
+				ConversationSubscriptions.update({'_id':convSubsID}, {$addToSet: {
+					'conversations':conversationID
+				}});
+			}
+		}
 	},
 
 
@@ -132,15 +149,18 @@ Meteor.methods({
 				unread = subscribers[i].unread;
 			}
 		}
-		console.log(unread);
-		// ConversationStreams.update({'_id':conversationStreamID, 'subscribers':{$elemMatch: {'user':Meteor.userId()}}}, {
-		// 	$set : {'subscribers.$.unread':0}
-		// });
+		// Clear ConversationStream Level
+		ConversationStreams.update({'_id':conversationStreamID, 'subscribers':{$elemMatch: {'user':Meteor.userId()}}}, {
+			$set : {'subscribers.$.unread':0}
+		});
+
 		// ConversationSubscription Level
-		// var conversationSubsID = Users.find({'_id':Meteor.userId()}).fetch()[0].profile.conversationSubs;
-		// ConversationSubscriptions.update({'_id':conversationSubsID, 'subscribers':{$elemMatch: {'user':Meteor.userId()}}}, {
-		// 	$set : {'subscribers.$.unread':0}
-		// });
+		// Decrease the unread counter by the number of unread messages in the opened conversation
+		var conversationSubsID = Users.find({'_id':Meteor.userId()}).fetch()[0].profile.conversationSubs;
+		unread *= -1; // Make the unread value negative
+		ConversationSubscriptions.update({'_id':conversationSubsID}, {
+			$inc : {'unread':unread}
+		});
 
 	}
 })

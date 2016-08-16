@@ -46,6 +46,7 @@
 
 .lastmessage{
 	width:100% !important;
+	height:45px;
 	text-overflow:ellipsis;
 
 	font-family:Karla;
@@ -58,7 +59,8 @@
 	top:5px;
 	right:-5px;
 	height:20px;
-	display:none;
+	/*display:none;*/
+	z-index:20;
 }
 
 .row:hover .delete{

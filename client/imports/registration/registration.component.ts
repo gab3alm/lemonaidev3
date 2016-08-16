@@ -12,6 +12,7 @@ import {Users} from '../../../both/collections/users';
 import {Meteor} from 'meteor/meteor';
 import {Mongo} from 'meteor/mongo';
 
+
 import template from './registration.html';
 @Component({
 	selector:'lemonaide-registration',
