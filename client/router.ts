@@ -9,8 +9,8 @@ import {DynamicviewComponent} from './imports/directory/dynamicview.component';
 import {ConversationsComponent} from './imports/conversations/conversations.component';
 import {BlankComponent} from './imports/conversations/blank.component';
 import {DynamicMessagesComponent} from './imports/conversations/dynamic-messages.component';
-// import {TasksComponent} from './imports/tasks/tasks.component';
-// import {DynamicTasksComponent} from './imports/tasks/dynamictasks.component';
+import {TasksComponent} from './imports/tasks/tasks.component';
+import {DynamicTasksComponent} from './imports/tasks/dynamictasks.component';
 
 export const routes : RouterConfig = [
 	{path:'', component:LoginComponent},
@@ -25,10 +25,10 @@ export const routes : RouterConfig = [
 			{path:'', component:BlankComponent}, 
 			{path:':id', component:DynamicMessagesComponent}
 		]},
-		// {path:'tasks', component:TasksComponent, children:[
-			// {path:'', component:BlankComponent},
-			// {path:':area', component: DynamicTasksComponent}
-		// ]},
+		{path:'tasks', component:TasksComponent, children:[
+			{path:'', component:BlankComponent},
+			{path:':area', component: DynamicTasksComponent}
+		]},
 		{path:'help', component: WelcomeComponent}
 	]}
 ];

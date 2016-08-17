@@ -31,7 +31,7 @@
 <!-- Modal Structure -->
 <div id="NewConversation" class="modal">
 	<div class="modal-content">
-		<p class="modal-title">New Conversation</p>
+		<p class="modal-title">new conversation</p>
 		<!-- SEND TO (CATEGORY) -->
 		<div class="row">
 			<input (click)="setMessageCategory('staff')" name="category-selection" class="with-gap" type="radio" id="staffMessage"/>
@@ -39,47 +39,52 @@
 			<input (click)="setMessageCategory('student')" name="category-selection" class="with-gap" type="radio" id="studentMessage"/>
 			<label for="studentMessage">Student</label>	
 		</div>
-		
-
 
 		<div *ngIf="messageCategory" class="row animated fadeIn">
 			<!-- SELECT STATEMENT WITH STAFF SELECTIONS -->
-			<div *ngIf="messageCategory == 'staff'" class="staff-message">
-				<label for="">Send Message To: </label>
-				<select [(ngModel)]="recipientID" name="recipientID" materialize="material_select" [materializeSelectOptions]="staffSelection">
-					<option value="" disabled selected>Select your option</option>
-					<option *ngFor="let option of staffSelection" [value]="option._id">{{option.profile.firstname | capitalize}} {{option.profile.lastname | capitalize}}</option>
-				</select>
+			<div class="row">
+				<div class="col s12">
+					<div *ngIf="messageCategory == 'staff'" class="staff-message">
+						<label for="">Send Message To: </label>
+						<select [(ngModel)]="recipientID" name="recipientID" materialize="material_select" [materializeSelectOptions]="staffSelection">
+							<option value="" disabled selected>Select your option</option>
+							<option *ngFor="let option of staffSelection" [value]="option._id">{{option.profile.firstname | capitalize}} {{option.profile.lastname | capitalize}}</option>
+						</select>
+					</div>
+
+					<!-- SELECT STATEMENT WITH STUDENT SELECTIONS -->
+					<div *ngIf="messageCategory == 'student'" class="staff-message">
+						<label for="">Send Message To: </label>
+						<select [(ngModel)]="recipientID" name="recipientID" materialize="material_select" [materializeSelectOptions]="studentSelection">
+							<option value="" disabled selected>Select your option</option>
+							<option *ngFor="let option of studentSelection" [value]="option._id">{{option.profile.firstname| capitalize}} {{option.profile.lastname| capitalize}}</option>
+						</select>
+					</div>	
+					
+
+					<!-- CONVERSATION TITLE -->
+					<div class="input-field col s12">
+						<input [(ngModel)]="conversationTitle" name="conversationTitle" id="conversationTitle" type="text" class="validate">
+						<label for="conversationTitle">Conversation Title</label>
+					</div>
+
+					<!-- CONVERSATION MESSAGE -->
+					<div class="input-field col s12">
+						<input [(ngModel)]="conversationMessage" name="conversationMessage" id="conversationMessage" type="text" class="validate">
+						<label for="conversationMessage">Conversation Message</label>
+					</div>
+
+					<!-- SEND MESSAGE BUTTON -->
+					<div class="right-align">
+						<a (click)="createNewConversation(recipientID, conversationTitle, conversationMessage)" class="btn cust-btn modal-action modal-close">Send Message</a>
+					</div>
+				</div>
 			</div>
-			
-
-			<!-- SELECT STATEMENT WITH STUDENT SELECTIONS -->
-			<div *ngIf="messageCategory == 'student'" class="staff-message">
-				<label for="">Send Message To: </label>
-				<select [(ngModel)]="recipientID" name="recipientID" materialize="material_select" [materializeSelectOptions]="studentSelection">
-					<option value="" disabled selected>Select your option</option>
-					<option *ngFor="let option of studentSelection" [value]="option._id">{{option.profile.firstname| capitalize}} {{option.profile.lastname| capitalize}}</option>
-				</select>
-			</div>
-
-
-			<!-- CONVERSATION TITLE -->
-			<div class="input-field col s12">
-				<input [(ngModel)]="conversationTitle" name="conversationTitle" id="conversationTitle" type="text" class="validate">
-				<label for="conversationTitle">Conversation Title</label>
-			</div>
-
-
-			<!-- CONVERSATION MESSAGE -->
-			<div class="input-field col s12">
-				<input [(ngModel)]="conversationMessage" name="conversationMessage" id="conversationMessage" type="text" class="validate">
-				<label for="conversationMessage">Conversation Message</label>
-			</div>
-			
-			<!-- SEND MESSAGE BUTTON -->
-			<a (click)="createNewConversation(recipientID, conversationTitle, conversationMessage)" class="btn teal lighten-2 modal-action modal-close">Send Message</a>
 		</div>
-
-
 	</div>
+
+	
+
+
+</div>
 </div>

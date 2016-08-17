@@ -42,3 +42,37 @@
 	font-size:1.4em;
 	color:white;
 }
+
+
+/*MODAL RULES*/
+.modal-content{
+	margin:0px;
+	padding:0px;
+}
+
+.modal-title{
+	margin:0px 0px 10px 0px;
+	padding:0px;
+	font-family:lato;
+	font-size:2em;
+	text-transform: capitalize;
+	width:100%;
+	background-color:rgba(29,35,42,1);
+	height:40px;
+	color:white;
+	text-align:center;
+}
+
+#NewConversation{
+	border-radius:10px;
+	width:500px;
+	overflow:hidden;
+}
+
+.cust-btn{
+	margin-top:10px;
+	border-radius:10px;
+	border:2px solid rgba(0,0,0,.5);
+	background-color:transparent;
+	color:rgba(0,0,0,1);
+}

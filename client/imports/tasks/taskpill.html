@@ -1,0 +1,88 @@
+<div class="row">
+	<ul class="collection">
+		<li class="collection-item">
+			<p class="header">tasks</p>
+			<div materialize="tooltip" class="tooltipped" data-position="right" data-delay="50" data-tooltip="Create new task">
+				<img class="add-task-image modal-trigger" materialize="leanModal" [materializeParams]="[{dismissible: true}]" href="#TaskCreation" src="images/add.svg" alt="">
+			</div>
+		</li>
+		<li class="collection-item selectable" (click)="navigate('all')">All</li>
+	</ul>
+
+	<ul class="collection">
+		<li class="collection-item">
+			<p class="header">Projects</p>
+			<div materialize="tooltip" class="tooltipped" data-position="right" data-delay="50" data-tooltip="Create new task">
+				<img class="add-task-image modal-trigger" materialize="leanModal" [materializeParams]="[{dismissible: true}]" href="#TaskCreation" src="images/add.svg" alt="">
+			</div>
+		</li>
+		<li class="collection-item selectable" (click)="navigate('all')">Lemonaide v3</li>
+	</ul>
+
+</div>
+
+
+
+
+
+<!-- Task Creation Modal Structure -->
+<div id="TaskCreation" class="modal">
+	<div class="modal-content">
+		<h4>Create new Task</h4>
+		<div class="row">
+			<!-- SEND TO -->
+			<div class="input-field col s12">
+				<select [(ngModel)]="recipientType" name="recipientType" materialize="material_select">
+					<option value="" selected disabled>Select your option</option>
+					<option value="myself">Myself</option>
+					<option value="staff">Staff</option>
+					<option value="student">Student</option>
+				</select>
+				<label>Assign to:</label>
+			</div>
+			
+			<!-- STAFF RECIPIENT LIST -->
+			<div class="input-field col s12" *ngIf="recipientType == 'staff'">
+				<select [(ngModel)]="recipientID" name="recipientID" materialize="material_select" [materializeSelectOptions]="staffRecipients">
+					<option value="" selected disabled>Select your option</option>
+					<option *ngFor="let option of staffRecipients" [value]="option._id">
+						{{option.profile.firstname}} {{option.profile.lastname}}
+					</option>
+				</select>
+				<label>Select Recipient</label>
+			</div>
+
+			<!-- STUDENT RECIPIENT LIST -->
+			<div class="input-field col s12" *ngIf="recipientType == 'student'">
+				<select [(ngModel)]="recipientID" name="recipientID" materialize="material_select" [materializeSelectOptions]="studentRecipients">
+					<option value="" selected disabled>Select your option</option>
+					<option *ngFor="let option of studentRecipients" [value]="option._id">
+						{{option.profile.firstname}} {{option.profile.lastname}}
+					</option>
+				</select>
+				<label>Select Recipient</label>
+			</div>
+
+			<!-- TASK TITLE -->
+			<div class="input-field col s12">
+				<input [(ngModel)]="taskTitle" name="taskTitle" id="task-title" type="text" class="validate">
+				<label for="task-title">Enter Task Title</label>
+			</div>
+
+			<!-- TASK DESCRIPTION -->
+			<div class="input-field col s12">
+				<textarea [(ngModel)]="taskDescription" name="taskDescription" id="task-description" class="materialize-textarea"></textarea>
+				<label for="task-description">Enter Task Description</label>
+			</div>
+
+			<!-- TASK DUE DATE -->
+			<div class="input-field col s12">
+				<input [(ngModel)]="taskDuedate" name="taskDuedate" id="task-duedate" type="date" class="datepicker">
+				<label class="active" for="task-duedate">Enter Due Date</label>
+			</div>	
+			
+			<!-- SEND THE TASK ELEMENT -->
+			<button (click)="sendTask()" class="btn btn-large right modal-action modal-close">Submit</button>		
+		</div>
+	</div>
+</div>

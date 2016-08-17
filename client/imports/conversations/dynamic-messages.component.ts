@@ -24,13 +24,13 @@ export class DynamicMessagesComponent extends MeteorComponent implements OnInit{
 	conversationTitle:string;
 	messages:Object;
 	reply:string;
+
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
 		private ngZone:NgZone){
 		super();
 	}
-
 
 	ngOnInit(){
 		this.route.params.subscribe(params =>{

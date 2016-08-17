@@ -8,6 +8,7 @@ import {Accounts} from 'meteor/accounts-base';
 import {MeteorComponent} from 'angular2-meteor';
 import {ConversationSubscriptions} from '../../../both/collections/conversationSubscriptions';
 import {TaskStreams} from '../../../both/collections/taskStream';
+import {ProjectStream} from '../../../both/collections/projectStream';
 import {Users} from '../../../both/collections/users';
 import {Meteor} from 'meteor/meteor';
 import {Mongo} from 'meteor/mongo';
@@ -45,6 +46,7 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 	leaveReason:string; //Reason when user takes break
 	conversationSubscriptions:string = ''; //reference to user's conversations subscriptions
 	taskSubscriptions:string = ''; //reference to user's tasks subscriptions
+	projectSubscriptions:string = ''; //reference to user's Project subscriptions
 
 	// SELECT FORM FIELD VALUES
 	// need to populate these fields with options from mongo collections
@@ -87,6 +89,7 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 				leaveReason:this.leaveReason,
 				conversationSubs:this.conversationSubscriptions,
 				taskSubs:this.taskSubscriptions,
+				projectSubs:this.projectSubscriptions,
 				securityQuestion:this.securityQuestion,
 				securityAnswer:this.securityAnswer
 			}
@@ -102,6 +105,7 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 				//create a place for all the user tasks
 				this.createConversationSubscription();
 				this.createTaskStream();
+				this.createProjectStream()
 				this.success = true;
 			}
 		});
@@ -163,4 +167,24 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 			}
 		});
 	}
+
+	createProjectStream(){
+		ProjectStream.insert({
+			owner:this.username,
+			projects:[]
+		}, (err, insertionID)=>{
+			// callback
+			if(err){
+				// ID of conversationSubscrition created
+				console.log("Error: " + err);
+			}else{
+				// creation of conversation subscriptions was successful
+				// update the user field
+				Users.update({"_id":Meteor.userId()}, {$set: 
+					{'profile.projectSubs':insertionID}
+				});
+			}
+		});
+	}
+
 }

@@ -1,0 +1,38 @@
+<ul class="collection hoverable">
+	<li class="collection-item">
+		<img (click)="deleteTask(taskStreamID, task.status, task.createdDate, task.sender)" materialize="tooltip" class="delete-task tooltipped" data-position="right" data-delay="50" data-tooltip="Delete Task" src="images/cancel.svg" alt="delete task">
+		
+		<!-- Dropdown Trigger -->
+		<div class="status-holder tooltipped" materialize="tooltip" data-position="left" data-delay="50" data-tooltip="Change Status">
+			<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+				<li>
+					<div class="collapsible-header">Status</div>
+					<div class="collapsible-body">
+						<div *ngIf="task.status!='pending'" (click)="updateTaskStatus(taskStreamID, task.status, task.createdDate, task.sender, 'pending')">
+							<a class="status-option">Pending</a>
+						</div>
+						<div *ngIf="task.status!='progress'" (click)="updateTaskStatus(taskStreamID, task.status, task.createdDate, task.sender, 'progress')">
+							<a class="status-option">In Progress</a>
+						</div>
+						<div *ngIf="task.status!='completed'" (click)="updateTaskStatus(taskStreamID, task.status, task.createdDate, task.sender, 'completed')">
+							<a class="status-option">Completed</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<p class="task-title animated slideInLeft">{{task.title}}</p>
+		<p class="task-description animated fadeIn">{{task.description}}</p>
+		<p class="task-duedate animated fadeIn">due: {{task.dueDate}}</p>
+		<p *ngIf="task.recipient != currusername && task.recipient != task.sender " class="sender-info animated slideInRight"> 
+			Sent to: {{task.recipient}} | {{task.createdDate}} 
+		</p>
+		<p *ngIf="task.recipient == currusername && task.recipient != task.sender" class="sender-info animated slideInRight"> 
+			Sent by: {{task.sender}} | {{task.createdDate}} 
+		</p>
+		<p *ngIf="task.sender == task.recipient " class="sender-info animated slideInRight"> 
+			self note | {{task.createdDate}} 
+		</p>
+	</li>
+</ul>
