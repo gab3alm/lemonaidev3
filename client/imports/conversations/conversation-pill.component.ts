@@ -9,7 +9,7 @@ import {Tracker} from 'meteor/tracker';
 import {Router} from '@angular/router';
 import {ConversationStreamsModel} from '../../../both/models/conv.streams.model';
 import {MaterializeDirective} from 'angular2-materialize';
-import '../../../both/collections/methods';
+import '../../../both/collections/conversation-methods';
 
 import template from './conversationpill.html';
 @Component({

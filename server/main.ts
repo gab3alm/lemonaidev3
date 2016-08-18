@@ -1,8 +1,9 @@
 import {Meteor} from 'meteor/meteor';
 import './imports/conversationSubscription.ts';
-import './imports/taskStream.ts';
 import './imports/users.ts';
 import './imports/conversationStream';
-import '../both/collections/methods';
+import './imports/projectsStream';
+import '../both/collections/conversation-methods';
+import '../both/collections/project-methods';
 
 // Meteor.startup();

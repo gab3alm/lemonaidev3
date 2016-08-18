@@ -9,7 +9,7 @@ import {Users} from '../../../both/collections/users';
 import {Meteor} from 'meteor/meteor';
 import {MeteorComponent} from 'angular2-meteor';
 import {Message} from '../../../both/classes/message';
-import '../../../both/collections/methods';
+import '../../../both/collections/conversation-methods';
 
 import template from './studentcard.html';
 @Component({

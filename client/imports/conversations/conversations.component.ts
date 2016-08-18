@@ -10,7 +10,7 @@ import {Tracker} from 'meteor/tracker';
 import {MaterializeDirective} from 'angular2-materialize';
 import {NgForm} from '@angular/forms';
 import {CapitalizePipe} from '../pipes/capitalize';
-import '../../../both/collections/methods';
+import '../../../both/collections/conversation-methods';
 
 import template from './conversations.html';
 @Component({

@@ -10,7 +10,7 @@ import {ConversationsComponent} from './imports/conversations/conversations.comp
 import {BlankComponent} from './imports/conversations/blank.component';
 import {DynamicMessagesComponent} from './imports/conversations/dynamic-messages.component';
 import {TasksComponent} from './imports/tasks/tasks.component';
-import {DynamicTasksComponent} from './imports/tasks/dynamictasks.component';
+// import {DynamicTasksComponent} from './imports/tasks/dynamictasks.component';
 
 export const routes : RouterConfig = [
 	{path:'', component:LoginComponent},
@@ -27,7 +27,7 @@ export const routes : RouterConfig = [
 		]},
 		{path:'tasks', component:TasksComponent, children:[
 			{path:'', component:BlankComponent},
-			{path:':area', component: DynamicTasksComponent}
+			// {path:':area', component: DynamicTasksComponent}
 		]},
 		{path:'help', component: WelcomeComponent}
 	]}

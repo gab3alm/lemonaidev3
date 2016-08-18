@@ -8,7 +8,7 @@ import {Session} from 'meteor/session';
 import {Router, ROUTER_DIRECTIVES} from '@angular/router';
 import {MeteorComponent} from 'angular2-meteor';
 import {Meteor} from 'meteor/meteor';
-import '../../../both/collections/methods';
+import '../../../both/collections/conversation-methods';
 
 import template from './staff-pill.html';
 @Component({

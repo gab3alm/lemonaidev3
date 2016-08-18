@@ -1,5 +1,5 @@
 export class Task{
-	createdDate:Object;
+	createdAt:Object;
 	sender:string;
 	recipient:string;
 	title:string;
@@ -8,7 +8,7 @@ export class Task{
 	status:string;
 
 	constructor(createdDate:Object, sender:string, recipient:string, title:string, description:string, due:Object){
-		this.createdDate = createdDate;
+		this.createdAt = createdDate;
 		this.sender = sender;
 		this.recipient = recipient;
 		this.title = title;

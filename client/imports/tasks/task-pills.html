@@ -1,0 +1,30 @@
+<div class="row">
+  <ul class="collection">
+    <li class="collection-item">
+      <p class="header">tasks</p>
+    </li>
+    <li class="collection-item selectable" >All</li>
+  </ul>
+
+  <ul class="collection">
+    <li class="collection-item">
+      <p class="header">Projects</p>
+      <div materialize="tooltip" class="tooltipped" data-position="right" data-delay="50" data-tooltip="Create Project">
+        <img class="add-task-image modal-trigger" materialize="leanModal" [materializeParams]="[{dismissible: true}]" href="#ProjectCreation" src="images/add.svg" alt="">
+      </div>
+    </li>
+    <li class="collection-item selectable">Lemonaide v3</li>
+  </ul>
+
+</div>
+
+
+
+
+
+<!-- Task Creation Modal Structure -->
+<div id="ProjectCreation" class="modal">
+  <div class="modal-content">
+   <h1>Project Addition Modal</h1>
+  </div>
+</div>

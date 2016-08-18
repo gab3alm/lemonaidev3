@@ -8,7 +8,7 @@ import {Users} from '../../../both/collections/users';
 import {NgForm} from '@angular/forms';
 import {Message} from '../../../both/classes/message';
 import {moment} from 'meteor/momentjs:moment';
-import '../../../both/collections/methods';
+import '../../../both/collections/conversation-methods';
 
 import template from './dynamicmessages.html';
 @Component({

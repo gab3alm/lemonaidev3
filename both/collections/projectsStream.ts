@@ -1,8 +1,8 @@
 import {Mongo} from 'meteor/mongo';
-import {ProjectModel} from '../models/project.streams.model';
-export let ProjectStream = new Mongo.Collection<ProjectModel>('projectstream');
+import {ProjectModel} from '../models/projects.stream.model';
+export let ProjectsStream = new Mongo.Collection<ProjectModel>('projectsstream');
 
-ProjectStream.allow({
+ProjectsStream.allow({
   insert: function() {
     let user = Meteor.user();
     

@@ -1,7 +1,7 @@
 import {Mongo} from 'meteor/mongo';
 import {Meteor} from 'meteor/meteor';
 import {ConversationSubscriptionModel} from '../models/conv.subscriptions.model';
-export let ConversationSubscriptions = new Mongo.Collection<ConversationSubscriptionModel>('convsubs');
+export const ConversationSubscriptions = new Mongo.Collection<ConversationSubscriptionModel>('convsubs');
 
 ConversationSubscriptions.allow({
   insert: function() {

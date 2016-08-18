@@ -2,7 +2,7 @@ import {Mongo} from 'meteor/mongo';
 import {Meteor} from 'meteor/meteor';
 import {ConversationStreamsModel} from '../models/conv.streams.model';
 
-export let ConversationStreams = new Mongo.Collection<ConversationStreamsModel>("convstream");
+export const ConversationStreams = new Mongo.Collection<ConversationStreamsModel>("convstream");
 
 ConversationStreams.allow({
   insert: function() {

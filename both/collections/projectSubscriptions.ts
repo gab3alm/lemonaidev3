@@ -1,23 +1,19 @@
 import {Mongo} from 'meteor/mongo';
-import {Meteor} from 'meteor/meteor';
+import {ProjectSubscriptionsModel} from '../models/project.subscriptions.model';
 
-export let TaskStreams = new Mongo.Collection('taskstreams');
+export const ProjectSubscriptions = new Mongo.Collection<ProjectSubscriptionsModel>('projectsubscriptions');
 
-TaskStreams.allow({
+ProjectSubscriptions.allow({
   insert: function() {
     let user = Meteor.user();
-    
     return !!user;
   },
   update: function() {
     let user = Meteor.user();
-    
     return !!user;
   },
   remove: function() {
     let user = Meteor.user();
-    
     return !!user;
   }
 });
-

@@ -7,8 +7,8 @@ import {NgClass} from '@angular/common';
 import {Accounts} from 'meteor/accounts-base';
 import {MeteorComponent} from 'angular2-meteor';
 import {ConversationSubscriptions} from '../../../both/collections/conversationSubscriptions';
-import {TaskStreams} from '../../../both/collections/taskStream';
-import {ProjectStream} from '../../../both/collections/projectStream';
+import {ProjectSubscriptions} from '../../../both/collections/projectSubscriptions';
+import {ProjectsStream} from '../../../both/collections/projectsStream';
 import {Users} from '../../../both/collections/users';
 import {Meteor} from 'meteor/meteor';
 import {Mongo} from 'meteor/mongo';
@@ -43,9 +43,9 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 	image:string; //path to users image
 	image2:string; // path to transparent image
 	presence:number = 0; // 0-!present | 1-present
-	leaveReason:string; //Reason when user takes break
+	leaveReason:string = ''; //Reason when user takes break
 	conversationSubscriptions:string = ''; //reference to user's conversations subscriptions
-	taskSubscriptions:string = ''; //reference to user's tasks subscriptions
+	personalTasksSubscriptions:string = ''; //reference to user's personal Tasks
 	projectSubscriptions:string = ''; //reference to user's Project subscriptions
 
 	// SELECT FORM FIELD VALUES
@@ -88,7 +88,7 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 				presence:this.presence,
 				leaveReason:this.leaveReason,
 				conversationSubs:this.conversationSubscriptions,
-				taskSubs:this.taskSubscriptions,
+				personalTasks:this.personalTasksSubscriptions,
 				projectSubs:this.projectSubscriptions,
 				securityQuestion:this.securityQuestion,
 				securityAnswer:this.securityAnswer
@@ -104,8 +104,8 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 				//create a place for all the user conversation subscriptions
 				//create a place for all the user tasks
 				this.createConversationSubscription();
-				this.createTaskStream();
-				this.createProjectStream()
+				this.createPersonalTaskStream();
+				this.createProjectStream();
 				this.success = true;
 			}
 		});
@@ -146,13 +146,18 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 	}
 
 
-	createTaskStream(){
-		TaskStreams.insert({
-			owner:this.username,
-			unread:0,
+	createPersonalTaskStream(){
+		var date = new Date().toString();
+		ProjectsStream.insert({
+			createdAt: date,
+			creator:Meteor.userId(),
+			title:'Personal Tasks',
+			dueDate:'personal',
 			pending:[],
 			progress:[],
-			completed:[]
+			completed:[],
+			public:false,
+			allowed:[Meteor.userId()]
 		}, (err, insertionID)=>{
 			// callback
 			if(err){
@@ -162,14 +167,14 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 				// creation of conversation subscriptions was successful
 				// update the user field
 				Users.update({"_id":Meteor.userId()}, {$set: 
-					{'profile.taskSubs':insertionID}
+					{'profile.personalTasks':insertionID}
 				});
 			}
 		});
 	}
 
 	createProjectStream(){
-		ProjectStream.insert({
+		ProjectSubscriptions.insert({
 			owner:this.username,
 			projects:[]
 		}, (err, insertionID)=>{
