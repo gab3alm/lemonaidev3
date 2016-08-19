@@ -3,7 +3,7 @@
     <li class="collection-item">
       <p class="header">tasks</p>
     </li>
-    <li class="collection-item selectable" >All</li>
+    <li class="collection-item selectable" (click)="navigate(personalTaskStreamID)">Personal</li>
   </ul>
 
   <ul class="collection">
@@ -13,7 +13,7 @@
         <img class="add-task-image modal-trigger" materialize="leanModal" [materializeParams]="[{dismissible: true}]" href="#ProjectCreation" src="images/add.svg" alt="">
       </div>
     </li>
-    <li class="collection-item selectable">Lemonaide v3</li>
+    <li class="collection-item selectable" *ngFor="let p of projectSubscriptions">{{p.title}}</li>
   </ul>
 
 </div>

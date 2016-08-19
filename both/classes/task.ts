@@ -1,16 +1,14 @@
 export class Task{
-	createdAt:Object;
-	sender:string;
-	recipient:string;
+	createdAt:string;
+	assigner:string;
 	title:string;
 	description:string;
 	dueDate:Object;
 	status:string;
 
-	constructor(createdDate:Object, sender:string, recipient:string, title:string, description:string, due:Object){
+	constructor(createdDate:string, assigner:string, title:string, description:string, due:Object){
 		this.createdAt = createdDate;
-		this.sender = sender;
-		this.recipient = recipient;
+		this.assigner = assigner;
 		this.title = title;
 		this.description = description;
 		this.dueDate = due;

@@ -6,6 +6,20 @@
 	padding:0px;
 }
 
+.header-container{
+	position:relative;
+}
+
+.task-addition-holder{
+	position:absolute;
+	top:10px;
+	left:200px;
+}
+
+.new-task{
+	height:25px;
+}
+
 .section-title{
 	font-family:karla;
 	font-size:1.8em;
@@ -13,5 +27,11 @@
 	text-align:center;
 	padding:0px;
 	margin:0px;
+}
+
+/*TASK ADDITION MODAL RULES*/
+#TaskAdditionModal{
+	width:500px;
+	z-index:-1;
 }
 

@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  
+  <div *ngIf="!allowed" class="forbidden">
+     <h4>Oops! This project is not public. Please contact the owner of the project and ask for permissions</h4> 
+  </div>
+
+  <div class="row">
+    <div *ngFor="let p of projectTasks" class="project-container">
+      <div class="header-container">
+        <!-- PROJECT TITLE AREA -->
+        <p class="area-title">{{p.title}}</p>
+
+        <!-- TASK ADDITION BUTTON -->
+        <div class="task-addition-holder tooltipped" materialize="tooltip" data-position="right" data-delay="50" data-tooltip="New Task">
+          <img src="images/add.svg" class="new-task modal-trigger" materialize="leanModal" [materializeParams]="[{dismissible: true}]" href="#TaskAdditionModal"> 
+        </div>
+
+        <!-- PUBLIC/NOT PUBLIC SWITCH -->
+        <div class="switch">
+          <label>
+            Private
+            <input *ngIf="active" type="checkbox" checked="checked">
+            <input *ngIf="!active" type="checkbox">
+            <span (click)="changeProjectVisibility(projectTasksID)" class="lever"></span>
+            Public
+          </label>
+        </div>
+
+      </div>
+      <!-- PENDING TASKS -->
+      <div class="col s12 m12 l4">
+        <p class="section-title">pending</p>
+
+      </div>
+      <!-- PROGRESS TASKS -->
+      <div class="col s12 m12 l4">
+        <p class="section-title">in progress</p>
+
+      </div>
+      <!-- COMPLETED TASKS -->
+      <div class="col s12 m12 l4">
+        <p class="section-title">completed</p>
+
+      </div>      
+    </div>  
+
+  </div>
+</div>
+
+
+
+<!-- NEW TASK ADDITION MODAL Structure -->
+<div id="TaskAdditionModal" class="modal">
+  <div class="modal-content">
+    <h4>Task Addition</h4>
+    <div class="row">
+      <!-- TASK TITLE -->
+      <div class="input-field col s6">
+        <input [(ngModel)]="title" name="title" id="title" type="text" class="validate">
+        <label for="title">Title</label>
+      </div>
+      <!-- TASK DUE DATE -->
+      <div class="input-field col s8">
+        <input [(ngModel)]="duedate" name="duedate" type="date" class="datepicker" materialize="pickadate" [materializeParams]="[{selectMonths: true, selectYears: 15}]">
+        <label>Due Date</label>
+      </div>
+      <!-- TASK DESCRIPTION -->
+      <div class="input-field col s12">
+        <textarea [(ngModel)]="description" name="description" id="description" class="materialize-textarea"></textarea>
+        <label for="description">Description</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a (click)="createTask(projectTasksID, title, duedate, description)" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+  </div>
+</div>
