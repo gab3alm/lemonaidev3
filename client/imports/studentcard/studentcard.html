@@ -2,7 +2,7 @@
 	<div class="student-card hoverable animated" [ngClass]="{flip: flipIt,bounce: !defaultIt}">
 		<!-- <img [src]="student.image" class="student-image" [ngClass]="{opaque: flipIt}"> -->
 		<div [ngStyle]="{'background-image': 'url('+student.profile.image+')'}" class="student-image" [ngClass]="{opaque: flipIt}">
-
+			<img class="student-image" [src]="student.profile.image" onError="this.onerror=null;this.src='images/user.svg';" />	
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||| -->
 			<!-- STUDENT INFORMATION (FRONT SIDE - CARD)-->
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -29,7 +29,6 @@
 					Away: {{student.profile.leaveReason}}
 				</p>
 			</div>	
-
 
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||| -->
 			<!-- SEND STUDENT MESSAGE (BACK SIDE - CARD)-->

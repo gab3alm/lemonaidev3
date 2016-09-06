@@ -46,6 +46,8 @@ Meteor.methods({
       // Project visibility is open to everyone
       return {permission:true};
     }
-  }
+  },
+
+  // 
 
 });

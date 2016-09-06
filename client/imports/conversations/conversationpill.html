@@ -4,7 +4,7 @@
 		<li class="collection-item avatar" >
 			
 			<div class="col s11" (click)="navigate(reference)">
-				<img *ngIf="recipientImage" [src]="recipientImage" alt="" class="circle">
+				<img *ngIf="recipientImage" [src]="recipientImage" class="circle" onError="this.onerror=null;this.src='images/user.svg';" />
 				<span class="title">{{conversationTitle}}</span>
 				<div *ngIf="unread != 0" materialize="tooltip" class="tooltipped unread" data-position="right" data-delay="50" data-tooltip="Unread Messages">
 					{{unread}}

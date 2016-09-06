@@ -16,7 +16,8 @@
 
 	<ul [routerLink]="['/home/directory', s.username]" class="collection">
 		<li class="collection-item">
-			<img [src]="s.profile.image" alt="" class="avatar">
+			<img class="avatar" [src]="s.profile.image" onError="this.onerror=null;this.src='images/user.svg';" />
+
 			<span class="name flow-text"> {{s.profile.firstname}} {{s.profile.lastname}} </span>
 			<!-- STAFF STATUS DISPLAY -->
 			<p *ngIf="s.profile.presence == 0" class="status absent flow-text">
@@ -46,7 +47,9 @@
 				<img (click)="cancelMessage()" src="images/cancel2.svg" class="cancel-action hoverable tooltipped modal-action modal-close" materialize="tooltip"  data-position="right" data-delay="50" data-tooltip="Cancel Message" alt="cancel message">
 			</div>
 			<div class="message-insertion">
-				<img [src]="s.profile.image" class="message-staff-image">
+				<img class="message-staff-image" [src]="s.profile.image" onError="this.onerror=null;this.src='images/user.svg';" />
+
+
 				<div class="input-field col s7">
 					<input [(ngModel)]="conversationTitle" name="conversationTitle" id="title" type="text" class="validate">
 					<label class="lem-SM" for="title">Title</label>

@@ -1,7 +1,7 @@
 <div class="dyn-avatar-holder">
-	<img [src]="staff.profile.image" class="cust-user-image">
-	<p class="full-name">{{staff.profile.firstname}} {{staff.profile.lastname}}</p>
-	<p class="title">{{staff.profile.title}}</p>
-	<button *ngIf="!staff.profile.leaveReason" class='cust-btn'> Present </button>
-	<button *ngIf="staff.profile.leaveReason" class='cust-btn'> Away: {{staff.profile.leaveReason}} </button>
+  <img class="cust-user-image" [src]="staff.profile.image" onError="this.onerror=null;this.src='images/user.svg';" />
+  <p class="full-name">{{staff.profile.firstname}} {{staff.profile.lastname}}</p>
+  <p class="title">{{staff.profile.title}}</p>
+  <button *ngIf="!staff.profile.leaveReason" class='cust-btn'> Present </button>
+  <button *ngIf="staff.profile.leaveReason" class='cust-btn'> Away: {{staff.profile.leaveReason}} </button>
 </div>

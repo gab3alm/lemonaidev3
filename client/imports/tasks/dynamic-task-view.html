@@ -1,8 +1,9 @@
 <div class="container-fluid">
-  
-  <div *ngIf="!allowed" class="forbidden">
-     <h4>Oops! This project is not public. Please contact the owner of the project and ask for permissions</h4> 
-  </div>
+  <!-- <div *ngIf="!allowed" class="forbidden">
+    <h4>
+      Oops! This project is not public. Please contact the owner of the project and ask for permissions
+    </h4> 
+  </div> --> 
 
   <div class="row">
     <div *ngFor="let p of projectTasks" class="project-container">
@@ -30,21 +31,21 @@
       <!-- PENDING TASKS -->
       <div class="col s12 m12 l4">
         <p class="section-title">pending</p>
+        <div *ngFor="let t of p.pending">
+         <single-task [task]="t"></single-task>
+       </div>
+     </div>
+     <!-- PROGRESS TASKS -->
+     <div class="col s12 m12 l4">
+      <p class="section-title">in progress</p>
+    </div>
+    <!-- COMPLETED TASKS -->
+    <div class="col s12 m12 l4">
+      <p class="section-title">completed</p>
+    </div>      
+  </div>  
 
-      </div>
-      <!-- PROGRESS TASKS -->
-      <div class="col s12 m12 l4">
-        <p class="section-title">in progress</p>
-
-      </div>
-      <!-- COMPLETED TASKS -->
-      <div class="col s12 m12 l4">
-        <p class="section-title">completed</p>
-
-      </div>      
-    </div>  
-
-  </div>
+</div>
 </div>
 
 

@@ -26,8 +26,8 @@ export const routes : RouterConfig = [
 			{path:':id', component:DynamicMessagesComponent}
 		]},
 		{path:'tasks', component:TasksComponent, children:[
-			{path:'', component:BlankComponent},
-			{path:':area', component: DynamicTaskViewComponent}
+			// {path:'', component:BlankComponent},
+			// {path:':area', component: DynamicTaskViewComponent}
 		]},
 		{path:'help', component: WelcomeComponent}
 	]}

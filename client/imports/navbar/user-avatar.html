@@ -1,5 +1,5 @@
 <div class="row avatar-container animated bounce">
-	<img class="user-avatar hide-on-small-only" [src]="user.profile.image" alt="">
+<img class="user-avatar hide-on-small-only" [src]="user.profile.image" onError="this.onerror=null;this.src='images/user.svg';" />
 	<div class="avatar-information">
 		<p class="text user-welcome">welcome, {{user.profile.firstname}} </p>
 		<div [ngSwitch]="user.profile.leaveReason" style="display:inline-block;">
