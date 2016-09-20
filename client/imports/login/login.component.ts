@@ -37,4 +37,9 @@ export class LoginComponent{
 		}, 800);
 	}
 
+
+	showMessage(){
+		alert("You forgot your password already! That's ok. Come talk to us in the Vidteam office");
+	}
+
 }

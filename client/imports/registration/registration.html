@@ -98,13 +98,13 @@
 						<!-- |||||||||||||||||||||| -->
 						<!-- DEPARTMENT SELECTION 	-->
 						<!-- |||||||||||||||||||||| -->
-						<div class="input-field col s12">
+						<!-- <div class="input-field col s12">
 							<select [(ngModel)]="department" name="department" materialize="material_select" [materializeSelectOptions]="departmentOptions" required>
 								<option value="" disabled selected>Select your option</option>
 								<option *ngFor="let option of departmentOptions" [value]="option">{{option | capitalize}}</option>
 							</select>
 							<label>Select your department</label>
-						</div>
+						</div> -->
 
 
 
@@ -115,7 +115,7 @@
 
 
 				<!-- PART 3 - PASSWORD RECOVERY INFO -->
-				<div *ngIf="department" class="col s10 push-s1 l4">
+				<div *ngIf="title" class="col s10 push-s1 l4">
 					<div [ngClass]="{slideInLeft: department, bounce: category}" class="row animated">
 						<p [ngClass]="{bounce: category}" class="main-title animated">Just in case</p>
 						<p class="info-message">

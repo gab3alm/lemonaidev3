@@ -1,0 +1,30 @@
+ <div class="col s12 animated fadeIn">
+  <div class="card hoverable">
+    <div class="card-content">
+
+      <div class="btn-holder">
+        <!--UPDATE TASK-->
+        <div>
+          <img class="action-btn update tooltipped" materialize="tooltip" data-position="left" data-delay="50" data-tooltip="Update Task" src="images/update.svg" alt="">
+        </div>
+
+        <!--DELETE TASK-->
+        <div>
+          <img class="action-btn delete tooltipped" materialize="tooltip" data-position="bottom" data-delay="50" data-tooltip="Delete Task" src="images/cancel.svg" alt="">
+        </div>
+      </div>
+
+      <p class="task-title animated slideInLeft">{{task.title}}</p>
+      <p class="task-description animated fadeIn">{{task.description}}</p>
+      <p class="task-duedate animated slideInRight">Due: {{task.dueDate}}</p>
+    </div>
+
+    <div class="card-action">
+      <div class="move-options">
+        <img *ngIf="task.status != 'pending'" class="section-btn tooltipped" materialize="tooltip" data-position="bottom" data-delay="50" data-tooltip="Move To Pending" src="images/pending.svg" alt="">
+        <img *ngIf="task.status != 'progress'" class="section-btn tooltipped" materialize="tooltip" data-position="bottom" data-delay="50" data-tooltip="Move To In Progress" src="images/progress.svg" alt="">
+        <img *ngIf="task.status != 'completed'" class="section-btn tooltipped" materialize="tooltip" data-position="bottom" data-delay="50" data-tooltip="Move To Completed" src="images/complete.svg" alt="">
+      </div>  
+    </div>
+  </div>
+</div>

@@ -72,6 +72,7 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 		// Creating new user.
 		// If the user creation function is successful, then user is automatically
 		// logged in METEOR. Now we can update the conversationSubs and taskSubs
+		this.department = 'Career Center';
 		this.createImagePaths();
 		Accounts.createUser({
 			username:this.username,
@@ -107,6 +108,7 @@ export class RegistrationComponent extends MeteorComponent implements OnInit{
 				this.createPersonalTaskStream();
 				this.createProjectStream();
 				this.success = true;
+				this.router.navigate(['home']);
 			}
 		});
 	}
